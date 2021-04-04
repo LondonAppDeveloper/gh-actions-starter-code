@@ -2,7 +2,6 @@ from django.test import SimpleTestCase, Client
 
 from django.urls import reverse
 
-# Create your tests here.
 
 class HomePageTests(SimpleTestCase):
     """Unit tests for home page."""

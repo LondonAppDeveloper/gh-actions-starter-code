@@ -7,5 +7,5 @@ app_name = 'home'
 
 
 urlpatterns = [
-    path('/', views.index, name='index'),
+    path('', views.index, name='index'),
 ]
