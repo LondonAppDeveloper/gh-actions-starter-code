@@ -1,6 +1,11 @@
 ---
 name: Continous Deployment
-on: push
+on:
+  push:
+    branches:
+      - main
+      - production
+  pull_request: []
 
 jobs:
   test:
