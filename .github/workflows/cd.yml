@@ -5,10 +5,10 @@ on: push
 
 jobs:
   hello-gh-actions:
-    name:Hello Github Actions
+    name: Hello Github Actions
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run tests
-        run: echo "RUNNING TESTS"  
+        run: echo "RUNNING TESTS"
