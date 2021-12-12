@@ -8,7 +8,9 @@ jobs:
                 name: Hello GitHub Actions
                 runs-on: ubuntu-18.04
                 steps:
-                        - name: Checkout
+                        -
+                                name: Checkout
                                 uses: actions/checkout@v2
-                        - name: Run Tests
+                        -
+                                name: Run Tests
                                 run: echo "RUNNING TESTS!"
