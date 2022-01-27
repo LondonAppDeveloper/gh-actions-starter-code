@@ -1,0 +1,51 @@
+name: Continuous Deployment
+on: 
+  push:
+    branches:
+      - main
+      - production
+  
+  pull_request: []
+      
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test
+        run: docker-compose run --rm app sh -c "python manage.py test"
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Lint
+        run: docker-compose run --rm app sh -c "flake8"
+
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-20.04
+    needs: [test, lint]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy to Staging
+        run: echo "Deploy to STAGING code here"
+  
+
+  deploy-prod:
+    name: Deploy to Production
+    runs-on: ubuntu-20.04
+    needs: [test, lint]
+    if: github.ref == 'refs/heads/production'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy to Prod
+        run: echo "Deploy to PRODUCTION code here"
