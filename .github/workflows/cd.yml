@@ -2,11 +2,11 @@ name: Continuous Deployment
 on: push
 
 jobs:
-  hello-gh-actions:
-    name: Hello GitHub Actions
-    runs-on: ubuntu-20.04
+  test:
+    name: Test
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run Tests
-        run: echo "RUNNING TESTS!"
+      - name: Test
+        run: docker-compose run --rm app sh -c "python manage.py test"
